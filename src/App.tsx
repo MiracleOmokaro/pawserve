@@ -12,6 +12,7 @@ import Celebrations from './pages/Celebrations';
 import Parks from './pages/Parks';
 import Schools from './pages/Schools';
 import DogMenu from './pages/DogMenu';
+import Breeds from './pages/Breeds';
 
 export default function App() {
   return (
@@ -30,6 +31,7 @@ export default function App() {
           <Route path="/parks" element={<Parks />} />
           <Route path="/schools" element={<Schools />} />
           <Route path="/dog-menu" element={<DogMenu />} />
+          <Route path="/breeds" element={<Breeds />} />
         </Route>
       </Routes>
     </BrowserRouter>

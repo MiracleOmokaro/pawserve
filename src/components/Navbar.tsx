@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Heart, Stethoscope, ShoppingBag, BookOpen, Home, Sparkles, TreePine, GraduationCap, UtensilsCrossed } from 'lucide-react';
+import { Menu, X, Heart, Stethoscope, ShoppingBag, BookOpen, Home, Sparkles, TreePine, GraduationCap, UtensilsCrossed, PawPrint } from 'lucide-react';
 
 const navLinks = [
   { to: '/', label: 'Home', icon: Home },
+  { to: '/breeds', label: 'Breeds', icon: PawPrint },
   { to: '/vets', label: 'Vets', icon: Stethoscope },
   { to: '/health', label: 'Health', icon: Heart },
   { to: '/shop', label: 'Shop', icon: ShoppingBag },
@@ -27,9 +28,13 @@ export default function Navbar() {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-border" role="navigation" aria-label="Main navigation">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          {/* Logo */}
+          {/* Logo — high quality white dog headshot */}
           <Link to="/" className="flex items-center gap-2 group" aria-label="PawServe home">
-            <img src="/pawserve-logo.svg" alt="PawServe" className="w-8 h-8 transition-transform duration-200 group-hover:scale-110" />
+            <img
+              src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=128&h=128&fit=crop&crop=faces"
+              alt="PawServe"
+              className="w-9 h-9 rounded-full object-cover ring-2 ring-secondary/30 transition-transform duration-200 group-hover:scale-110"
+            />
             <span className="font-heading text-xl text-primary font-bold">PawServe</span>
           </Link>
 
