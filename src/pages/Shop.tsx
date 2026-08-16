@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { ShoppingBag, Search, Plus, Minus, X, ShoppingCart } from 'lucide-react';
-import { products } from '../constants/data';
+import { products, type Product } from '../constants/data';
 
 const categories = ['All', 'Food', 'Toys', 'Health', 'Grooming'] as const;
 

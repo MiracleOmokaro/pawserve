@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { PawPrint, Stethoscope, Heart, ShoppingBag, BookOpen, ArrowRight, Award, Users } from 'lucide-react';
+import { PawPrint, Stethoscope, Heart, ShoppingBag, BookOpen, ArrowRight, Shield, Award, Users } from 'lucide-react';
 
 const features = [
   {
