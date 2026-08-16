@@ -1,29 +1,21 @@
 <svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <!-- Outer ring — subtle badge -->
-  <circle cx="60" cy="60" r="56" fill="#FDF8F3" stroke="#5C4033" stroke-width="2.5" stroke-linejoin="round"/>
-
-  <!-- Left ear -->
-  <ellipse cx="32" cy="34" rx="14" ry="20" fill="#5C4033" transform="rotate(-25, 32, 34)"/>
-
-  <!-- Right ear -->
-  <ellipse cx="88" cy="34" rx="14" ry="20" fill="#5C4033" transform="rotate(25, 88, 34)"/>
-
-  <!-- Left inner ear accent (warm orange) -->
-  <ellipse cx="32" cy="34" rx="6" ry="11" fill="#E07A2F" transform="rotate(-25, 32, 34)"/>
-
-  <!-- Right inner ear accent (warm orange) -->
-  <ellipse cx="88" cy="34" rx="6" ry="11" fill="#E07A2F" transform="rotate(25, 88, 34)"/>
-
-  <!-- Head -->
-  <ellipse cx="60" cy="58" rx="30" ry="26" fill="#5C4033"/>
-
-  <!-- Eyes -->
-  <circle cx="46" cy="54" r="4" fill="#FDF8F3"/>
-  <circle cx="74" cy="54" r="4" fill="#FDF8F3"/>
-
-  <!-- Nose -->
-  <ellipse cx="60" cy="66" rx="5" ry="3.5" fill="#E07A2F"/>
-
-  <!-- Smile -->
-  <path d="M 52 72 Q 60 78 68 72" stroke="#FDF8F3" stroke-width="2" stroke-linecap="round" fill="none"/>
+  <!-- Stylized 'n' letterform — elegant, minimal, modern -->
+  <!-- Outer shape (clockwise) creates the n outline -->
+  <!-- Inner shape (counter-clockwise) creates the open counter (hole) -->
+  <path d="
+    M 20 92
+    L 20 30
+    Q 20 16, 34 16
+    L 86 16
+    Q 100 16, 100 30
+    L 100 92
+    M 46 92
+    L 46 42
+    Q 46 34, 54 34
+    L 74 34
+    Q 82 34, 82 42
+    L 82 92
+  " fill="#5C4033" fill-rule="evenodd"/>
+  <!-- Accent — playful dot suggesting a dog's ear tip -->
+  <circle cx="86" cy="10" r="7" fill="#E07A2F"/>
 </svg>
