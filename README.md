@@ -1,13 +1,13 @@
 <p align="center">
-  <img src="public/pawserve-logo.svg" alt="PawServe Logo" width="100" height="100" />
+  <img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=200&h=200&fit=crop&crop=faces" alt="PawServe Logo" width="100" height="100" style="border-radius: 50%;" />
 </p>
 
 <h1 align="center">🐾 PawServe</h1>
 
 <p align="center">
-  <strong>Everything your dog needs, in one place.</strong>
+  <strong>Everything your dog needs — in one place.</strong>
   <br />
-  Find vets · AI health advice · Shop for supplies · Expert care guides
+  Find vets · AI health advice · Breed finder · Parks · Schools · Expert care
 </p>
 
 <p align="center">
@@ -21,14 +21,17 @@
 
 ## 📖 About
 
-**PawServe** is a comprehensive dog care platform that brings together everything you need to keep your best friend happy and healthy — vet directory, AI-powered symptom checker, pet supply shop, and expert care guides.
+**PawServe** is a comprehensive dog care platform that brings together everything you need to keep your best friend happy and healthy — vet directory, AI-powered symptom checker, breed finder, dog schools, parks, pet supply shop, and expert care guides.
 
 ---
 
 ## ✨ Features
 
 - **AI Symptom Checker** — describe symptoms and get AI-powered first aid guidance with severity assessment (green/yellow/red) via Google Gemini. Supports voice input.
+- **Breed Finder** — explore 40+ breeds across 8 categories with filters, detail modals, and care insights.
 - **Vet Finder** — browse a directory of veterinarians by specialty, location, and rating.
+- **Dog Schools & Parks** — discover training academies and off-leash parks worldwide.
+- **Global Dog Menu** — dog-friendly cafés and restaurants around the world.
 - **Pet Supply Shop** — browse Food, Toys, Health, and Grooming products with category filtering.
 - **Expert Content** — care guides for new owners, articles on wellness and rehabilitation.
 - **Voice Input** — tap the mic to describe symptoms hands-free using Speechmatics.
@@ -45,7 +48,7 @@
 ### Installation
 
 ```bash
-git clone https://github.com/your-username/pawserve.git
+git clone https://github.com/MiracleOmokaro/pawserve.git
 cd pawserve
 npm install
 npm run dev
@@ -84,6 +87,7 @@ PawServe uses a **client-side** architecture with serverless edge functions for 
 | Route | Page | Description |
 |-------|------|-------------|
 | `/` | Home | Landing page |
+| `/breeds` | Breed Finder | Explore breeds by category & size |
 | `/vets` | Vet Finder | Directory |
 | `/health` | Symptom Checker | AI health advice |
 | `/shop` | Pet Supply Shop | Product catalog |
@@ -91,6 +95,9 @@ PawServe uses a **client-side** architecture with serverless edge functions for 
 | `/articles` | Articles | Expert content |
 | `/articles/:id` | Article Detail | Full article |
 | `/rehab` | Rehab & Psychiatry | Dog wellness |
+| `/parks` | Dog Parks | Worldwide off-leash spots |
+| `/schools` | Dog Schools | Training academies |
+| `/dog-menu` | Global Dog Menu | Dog-friendly restaurants |
 | `/celebrations` | Dog Day Celebrations | International Dog Day, National Puppy Day, and more |
 
 ---
@@ -117,12 +124,6 @@ Distributed under the [MIT License](LICENSE).
 
 ---
 
-<p align="center">
-  🐶 Built for happy, healthy dogs everywhere
-</p>
-
----
-
 ## 📱 Progressive Web App (PWA)
 
 PawServe is a fully installable **Progressive Web App** — no APK needed!
@@ -133,4 +134,11 @@ PawServe is a fully installable **Progressive Web App** — no APK needed!
 - **Full-screen mode** — native app-like experience with no browser chrome
 
 > No app store submission required. Just visit the live site and install.
+
+---
+
+<p align="center">
+  🐶 Built for happy, healthy dogs everywhere — especially for International Dog Day
 </p>
+
+<hr />
