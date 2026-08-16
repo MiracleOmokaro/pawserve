@@ -244,7 +244,7 @@ This project was built for the **DEV Weekend Challenge: Dog Days Edition**, cele
 
 ## 📄 License
 
-Distributed under the **MIT License**. See `LICENSE` for more information.
+Distributed under the [**MIT License**](LICENSE). See the LICENSE file for more information.
 
 ---
 
