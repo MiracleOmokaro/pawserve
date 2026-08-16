@@ -7,9 +7,7 @@
 <p align="center">
   <strong>Everything your dog needs, in one place.</strong>
   <br />
-  Built for <strong>International Dog Day</strong> 🎉
-  <br />
-  Find vets · AI health advice · Shop for supplies · Expert care guides
+  Find vets · AI health advice · Shop for supplies · Expert care guides · Voice-powered symptom checker
 </p>
 
 <p align="center">
@@ -28,6 +26,8 @@
   <img src="https://img.shields.io/badge/Tailwind_CSS-4.1-06B6D4?logo=tailwindcss&logoColor=white" alt="Tailwind CSS 4.1" />
   <img src="https://img.shields.io/badge/Gemini_AI-8E75B2?logo=google&logoColor=white" alt="Gemini AI" />
   <img src="https://img.shields.io/badge/Supabase-3FCF8E?logo=supabase&logoColor=white" alt="Supabase" />
+  <img src="https://img.shields.io/badge/Edge_Functions-3FCF8E?logo=supabase&logoColor=white" alt="Edge Functions" />
+  <img src="https://img.shields.io/badge/Speechmatics-004B87?logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2NCIgaGVpZ2h0PSI2NCIgdmlld0JveD0iMCAwIDY0IDY0Ij48cGF0aCBmaWxsPSIjZmZmIiBkPSJNMzIgNEMxNi41MzYgNCA0IDE2LjUzNiA0IDMyczEyLjUzNiAyOCAyOCAyOCAyOC0xMi41MzYgMjgtMjhTNDcuNDY0IDQgMzIgNHptMCA1MmMtMTMuMjU1IDAtMjQtMTAuNzQ1LTI0LTI0czEwLjc0NS0yNCAyNC0yNCAyNCAxMC43NDUgMjQgMjQtMTAuNzQ1IDI0LTI0IDI0em0tNi0zN2wxMiA2LTEyIDZ2LTEyeiIvPjwvc3ZnPg==" alt="Speechmatics" />
   <img src="https://img.shields.io/badge/license-MIT-brightgreen" alt="MIT License" />
 </p>
 
@@ -35,22 +35,27 @@
 
 ## 📖 About
 
-**PawServe** is a comprehensive dog care platform celebrating **International Dog Day**. Whether you're a new puppy parent or a seasoned dog owner, PawServe brings together everything you need to keep your best friend happy and healthy:
+**PawServe** is a comprehensive dog care platform. Whether you're a new puppy parent or a seasoned dog owner, PawServe brings together everything you need to keep your best friend happy and healthy:
 
-- 🏥 **AI-powered symptom checker** (powered by Google Gemini) for instant first aid guidance
+- 🏥 **AI-powered symptom checker** (powered by Google Gemini via server-side Edge Functions) for instant first aid guidance and severity assessment
+- 🎙️ **Voice-powered input** for hands-free symptom descriptions (via Speechmatics real-time transcription)
 - 👨‍⚕️ **Vet directory** with specialties, locations, and booking
 - 🛍️ **Pet supply shop** — food, toys, health, grooming
 - 📚 **Expert guides & articles** on care, rehabilitation, and emotional wellness
-- 🎙️ **Voice-powered input** for hands-free symptom descriptions (via Speechmatics)
 
-Built with React, TypeScript, and Tailwind CSS for a warm, approachable experience that dog owners love.
+Built with React, TypeScript, and Tailwind CSS with a **server-side architecture** — AI API keys are stored securely in Supabase Secret Manager and called only from Edge Functions, never exposed to the browser.
 
 ---
 
 ## ✨ Features
 
 ### 🏥 AI-Powered Symptom Checker
-Describe your dog's symptoms and get instant AI-powered first aid advice powered by **Google Gemini**. The checker returns possible causes, immediate steps, and a severity assessment (green/yellow/red) to help you decide when to see a vet. **Also supports voice input** — just tap the mic and describe symptoms hands-free.
+Describe your dog's symptoms and get instant AI-powered first aid advice powered by **Google Gemini**. The checker returns possible causes, immediate steps, and a severity assessment (🟢 green / 🟡 yellow / 🔴 red) to help you decide when to see a vet. **Also supports voice input** — just tap the mic and describe symptoms hands-free.
+
+> **Security:** The Gemini API key is stored in Supabase Secret Manager and called server-side via an Edge Function — never exposed in client-side code.
+
+### 🎙️ Voice-Powered Input
+Tap the microphone button on the Symptom Checker to speak your dog's symptoms instead of typing. Powered by **Speechmatics** real-time speech-to-text via a Supabase Edge Function token exchange — your API key stays server-side.
 
 ### 👨‍⚕️ Vet Finder
 Browse a directory of veterinarians with specialties, locations, and ratings. Filter by specialty and book appointments directly through the platform.
@@ -63,9 +68,6 @@ Browse products across categories — Food, Toys, Health, and Grooming. Filter, 
 - **Articles** — Expert-written content on emotional care, rehabilitation, and dog wellness
 - **Rehab & Psychiatry** — Information on dog rehabilitation, emotional support, and behavioral health
 
-### 🎙️ Voice-Powered Input
-Tap the microphone button on the Symptom Checker to speak your dog's symptoms instead of typing — powered by **Speechmatics** real-time speech-to-text.
-
 ---
 
 ## 🚀 Getting Started
@@ -74,6 +76,9 @@ Tap the microphone button on the Symptom Checker to speak your dog's symptoms in
 
 - **Node.js** 20+ (LTS recommended)
 - **npm** 10+ or **yarn** / **pnpm**
+- **Supabase account** (free tier) — for Edge Functions and Secret Manager
+- **Speechmatics account** (free trial) — for voice transcription
+- **Google Gemini API key** — for AI symptom checker
 
 ### Installation
 
@@ -109,10 +114,19 @@ npm run preview
 | **[Vite 7](https://vitejs.dev/)** | Build tool & dev server |
 | **[Tailwind CSS 4](https://tailwindcss.com/)** | Utility-first styling |
 | **[React Router v7](https://reactrouter.com/)** | Client-side routing |
-| **[Google Gemini API](https://ai.google.dev/)** | AI symptom checker |
-| **[Supabase](https://supabase.com/)** | Edge Functions & database |
-| **[Speechmatics](https://www.speechmatics.com/)** | Real-time speech-to-text |
+| **[Supabase](https://supabase.com/)** | Edge Functions (server-side logic), Secret Manager, Hosting |
+| **[Google Gemini API](https://ai.google.dev/)** | AI symptom checker (via server-side Edge Function proxy) |
+| **[Speechmatics](https://www.speechmatics.com/)** | Real-time speech-to-text (via server-side token exchange) |
 | **[Lucide React](https://lucide.dev/)** | UI icons |
+
+### Architecture Highlights
+
+| Aspect | Approach |
+|--------|----------|
+| **AI API Keys** | Stored in **Supabase Secret Manager** — never in client code |
+| **Backend Logic** | **Supabase Edge Functions** (Deno) — proxy for Gemini & Speechmatics |
+| **Authentication** | Optional — can be added via Supabase Auth |
+| **Hosting** | Static Vite build — deploy anywhere (Netlify, Vercel, Cloudflare, GitHub Pages) |
 
 ### Design System
 
@@ -130,36 +144,39 @@ PawServe uses a warm, earthy palette designed for a friendly, approachable feel:
 
 ```
 pawserve/
-├── public/                  # Static assets
-│   └── pawserve-logo.svg    # App logo
+├── public/                          # Static assets
+│   └── pawserve-logo.svg            # App logo
+├── supabase/
+│   └── functions/                   # Supabase Edge Functions (Deno)
+│       ├── speechmatics-token/      # Token exchange for Speechmatics
+│       └── gemini-chat/             # Server-side proxy for Google Gemini AI
 ├── src/
-│   ├── components/          # Shared components
-│   │   ├── Navbar.tsx       # Navigation bar
-│   │   ├── Footer.tsx       # Site footer
-│   │   └── Layout.tsx       # Page layout wrapper
-│   ├── constants/           # Config & data
-│   │   ├── config.ts        # App configuration
-│   │   └── data.ts          # Static data (vets, products, articles)
-│   ├── hooks/               # Custom React hooks
-│   │   └── useSpeechmatics.ts # Speech-to-text hook
-│   ├── lib/                 # Library helpers
-│   │   └── supabase.ts      # Supabase client
-│   ├── pages/               # Route pages
-│   │   ├── Home.tsx         # Landing page
-│   │   ├── Shop.tsx         # Pet supply catalog
-│   │   ├── Vets.tsx         # Vet directory & booking
-│   │   ├── Guides.tsx       # New owner guidelines
-│   │   ├── Articles.tsx     # Article listings
-│   │   ├── ArticleDetail.tsx# Individual article
-│   │   ├── Health.tsx       # Symptom checker (Gemini AI + voice)
-│   │   └── Rehab.tsx        # Rehab & psychiatry info
-│   ├── App.tsx              # Root component with routing
-│   ├── main.tsx             # Entry point
-│   └── index.css            # Global styles & Tailwind theme
-├── supabase/                # Supabase Edge Functions
-│   └── functions/
-│       └── speechmatics-token/ # Token exchange for Speechmatics
-├── index.html               # HTML entry
+│   ├── components/                  # Shared components
+│   │   ├── Navbar.tsx               # Navigation bar
+│   │   ├── Footer.tsx               # Site footer
+│   │   └── Layout.tsx               # Page layout wrapper
+│   ├── constants/                   # Config & data
+│   │   ├── config.ts                # App configuration (public keys only)
+│   │   └── data.ts                  # Static data (vets, products, articles)
+│   ├── hooks/                       # Custom React hooks
+│   │   └── useSpeechmatics.ts       # Speech-to-text hook
+│   ├── lib/                         # Library helpers
+│   │   └── supabase.ts              # Supabase client
+│   ├── pages/                       # Route pages
+│   │   ├── Home.tsx                 # Landing page
+│   │   ├── Shop.tsx                 # Pet supply catalog
+│   │   ├── Vets.tsx                 # Vet directory & booking
+│   │   ├── Guides.tsx               # New owner guidelines
+│   │   ├── Articles.tsx             # Article listings
+│   │   ├── ArticleDetail.tsx        # Individual article
+│   │   ├── Health.tsx               # Symptom checker (Gemini AI + voice)
+│   │   └── Rehab.tsx                # Rehab & psychiatry info
+│   ├── App.tsx                      # Root component with routing
+│   ├── main.tsx                     # Entry point
+│   └── index.css                    # Global styles & Tailwind theme
+├── .github/workflows/
+│   └── deploy.yml                   # GitHub Actions for Pages deployment
+├── index.html                       # HTML entry
 ├── package.json
 ├── tsconfig.json
 ├── vite.config.ts
@@ -170,31 +187,33 @@ pawserve/
 
 ## ⚙️ Configuration
 
-### Gemini API Key (Required for Symptom Checker)
+### Supabase (Required)
+
+The app uses Supabase for Edge Functions and Secret Manager. The public anon key and URL are configured in `src/constants/config.ts` (already set for the demo project).
+
+### Google Gemini API Key (Required for Symptom Checker)
 
 The symptom checker requires a **Google Gemini API key**. Get one free at [Google AI Studio](https://aistudio.google.com/).
 
-Create a `.env` file (or set in your environment):
+> **Important:** The key is stored **server-side** in Supabase Secret Manager, not in a `.env` file. To configure it:
 
-```env
-VITE_GEMINI_API_KEY=your_gemini_api_key_here
-```
+1. Go to your [Supabase Dashboard](https://supabase.com/dashboard/project/xifkkozscsvrrnyzbecf/settings/secrets)
+2. Under **Edge Functions** → **Secrets**, add:
+   - **Name:** `GEMINI_API_KEY`
+   - **Value:** Your Gemini API key from Google AI Studio
 
-> **Note:** For hackathon/demo purposes, the key is used client-side via the `@google/generative-ai` SDK. For production, route API calls through a backend.
+The `gemini-chat` Edge Function reads the key via `Deno.env.get('GEMINI_API_KEY')` — it never touches the browser.
 
-### Speechmatics (Voice Input)
+### Speechmatics API Key (Required for Voice Input)
 
-Voice input on the Symptom Checker uses **Speechmatics** real-time transcription. Configure the API key via Supabase Edge Functions secrets:
+Voice input on the Symptom Checker uses **Speechmatics** real-time transcription. To configure:
 
-1. Go to your Supabase dashboard → **Edge Functions** → Secrets
-2. Add `SPEECHMATICS_API_KEY` with your API key from [Speechmatics Portal](https://portal.speechmatics.com/)
+1. Get an API key from [Speechmatics Portal](https://portal.speechmatics.com/)
+2. In your Supabase Dashboard → **Edge Functions** → **Secrets**, add:
+   - **Name:** `SPEECHMATICS_API_KEY`
+   - **Value:** Your Speechmatics API key
 
-### Supabase (Optional)
-
-```env
-VITE_SUPABASE_URL=your_supabase_url
-VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
-```
+The `speechmatics-token` Edge Function exchanges this key for a short-lived JWT token on each session.
 
 ---
 
@@ -223,10 +242,18 @@ npm run build
 
 Deploy the `dist/` folder to:
 
-- **Netlify** — drag & drop `dist/` or auto-deploy from GitHub
-- **Vercel** — `vercel --prod` or auto-deploy from GitHub
-- **Cloudflare Pages** — connect repo
-- **GitHub Pages** — via `gh-pages` branch
+| Host | Free Tier | Private Repo | Notes |
+|------|-----------|-------------|-------|
+| **Netlify** | ✅ Yes | ✅ Works | Auto-deploy from GitHub, drag & drop |
+| **Vercel** | ✅ Yes | ✅ Works | Auto-deploy from GitHub |
+| **Cloudflare Pages** | ✅ Yes | ✅ Works | Connect repo, auto-deploy |
+| **GitHub Pages** | ✅ Yes | ❌ Free plan only works on **public repos** | Requires GitHub Pro for private repos |
+
+### GitHub Actions (GitHub Pages)
+
+A `.github/workflows/deploy.yml` workflow is included for GitHub Pages. It builds and deploys automatically on pushes to `main`.
+
+> **Note for private repos:** GitHub Pages requires a public repository on the free plan. If the repo is private, upgrade to GitHub Pro or use Netlify/Vercel instead.
 
 ---
 

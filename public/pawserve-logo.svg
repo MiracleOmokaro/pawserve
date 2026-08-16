@@ -1,21 +1,44 @@
 <svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <!-- Stylized 'n' letterform — elegant, minimal, modern -->
-  <!-- Outer shape (clockwise) creates the n outline -->
-  <!-- Inner shape (counter-clockwise) creates the open counter (hole) -->
-  <path d="
-    M 20 92
-    L 20 30
-    Q 20 16, 34 16
-    L 86 16
-    Q 100 16, 100 30
-    L 100 92
-    M 46 92
-    L 46 42
-    Q 46 34, 54 34
-    L 74 34
-    Q 82 34, 82 42
-    L 82 92
-  " fill="#5C4033" fill-rule="evenodd"/>
-  <!-- Accent — playful dot suggesting a dog's ear tip -->
-  <circle cx="86" cy="10" r="7" fill="#E07A2F"/>
+  <!-- Dog face silhouette -->
+  <g>
+    <!-- Left ear -->
+    <path d="M30 36 C22 22, 14 26, 18 40 C20 48, 26 52, 30 50Z" fill="#5C4033"/>
+    <!-- Right ear -->
+    <path d="M90 36 C98 22, 106 26, 102 40 C100 48, 94 52, 90 50Z" fill="#5C4033"/>
+    <!-- Inner left ear -->
+    <path d="M28 38 C24 30, 20 32, 22 40 C23 44, 27 46, 28 46Z" fill="#E07A2F" opacity="0.4"/>
+    <!-- Inner right ear -->
+    <path d="M92 38 C96 30, 100 32, 98 40 C97 44, 93 46, 92 46Z" fill="#E07A2F" opacity="0.4"/>
+    <!-- Head shape -->
+    <ellipse cx="60" cy="52" rx="32" ry="28" fill="#5C4033"/>
+    <!-- Face inner color -->
+    <ellipse cx="60" cy="58" rx="24" ry="20" fill="#FDF8F3"/>
+    <!-- Eyes -->
+    <ellipse cx="48" cy="46" rx="3.5" ry="4" fill="#3A2A1D"/>
+    <ellipse cx="72" cy="46" rx="3.5" ry="4" fill="#3A2A1D"/>
+    <!-- Eye shine -->
+    <circle cx="49.5" cy="44.5" r="1.5" fill="white" opacity="0.7"/>
+    <circle cx="73.5" cy="44.5" r="1.5" fill="white" opacity="0.7"/>
+    <!-- Nose -->
+    <ellipse cx="60" cy="56" rx="5" ry="3.5" fill="#3A2A1D"/>
+    <!-- Nose shine -->
+    <ellipse cx="58.5" cy="55" rx="1.5" ry="1" fill="white" opacity="0.5"/>
+    <!-- Mouth -->
+    <path d="M60 59.5 C56 63, 50 62, 48 60" stroke="#3A2A1D" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+    <path d="M60 59.5 C64 63, 70 62, 72 60" stroke="#3A2A1D" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+    <!-- Collar -->
+    <path d="M36 68 C40 74, 80 74, 84 68" stroke="#E07A2F" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <!-- Collar tag -->
+    <circle cx="60" cy="78" r="5" fill="#E07A2F"/>
+    <path d="M60 73 L60 83" stroke="#FDF8F3" stroke-width="1.5" stroke-linecap="round"/>
+    <!-- Paw print accent below -->
+    <g transform="translate(60, 98)" fill="#6B8E5A" opacity="0.4">
+      <!-- Main pad -->
+      <ellipse cx="0" cy="2" rx="6" ry="5"/>
+      <!-- Toe pads -->
+      <ellipse cx="-6" cy="-5" rx="2.5" ry="2.5"/>
+      <ellipse cx="0" cy="-7" rx="2.5" ry="2.5"/>
+      <ellipse cx="6" cy="-5" rx="2.5" ry="2.5"/>
+    </g>
+  </g>
 </svg>
