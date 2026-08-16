@@ -9,6 +9,9 @@ import Articles from './pages/Articles';
 import ArticleDetail from './pages/ArticleDetail';
 import Rehab from './pages/Rehab';
 import Celebrations from './pages/Celebrations';
+import Parks from './pages/Parks';
+import Schools from './pages/Schools';
+import DogMenu from './pages/DogMenu';
 
 export default function App() {
   return (
@@ -24,6 +27,9 @@ export default function App() {
           <Route path="/articles/:id" element={<ArticleDetail />} />
           <Route path="/rehab" element={<Rehab />} />
           <Route path="/celebrations" element={<Celebrations />} />
+          <Route path="/parks" element={<Parks />} />
+          <Route path="/schools" element={<Schools />} />
+          <Route path="/dog-menu" element={<DogMenu />} />
         </Route>
       </Routes>
     </BrowserRouter>
