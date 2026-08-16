@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
-import { PawPrint, Stethoscope, Heart, ShoppingBag, BookOpen, ArrowRight, Award, Users } from 'lucide-react';
+import { PawPrint, Stethoscope, Heart, ShoppingBag, BookOpen, ArrowRight, Award, Users, Sparkles, CalendarDays, Globe } from 'lucide-react';
+import { dogCelebrations } from '../constants/data';
 
 const features = [
   {
@@ -149,6 +150,57 @@ export default function Home() {
             <BookOpen className="w-5 h-5" />
             Read the New Owner Guide
           </Link>
+        </div>
+      </section>
+
+      {/* Celebrations Section */}
+      <section className="py-16 sm:py-20 bg-gradient-to-b from-transparent via-secondary/[0.03] to-transparent">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-10">
+            <div className="w-14 h-14 bg-gradient-to-br from-secondary/20 to-accent/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+              <Sparkles className="w-7 h-7 text-secondary" />
+            </div>
+            <h2 className="font-heading text-3xl sm:text-4xl font-bold text-foreground mb-3">Dog Day Celebrations</h2>
+            <p className="text-foreground/60 max-w-2xl mx-auto">
+              From International Dog Day to National Puppy Day — celebrate your best friend all year round!
+              Discover fun ways to honor your pup on every special occasion.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+            {dogCelebrations.slice(0, 4).map((c) => (
+              <div
+                key={c.id}
+                className="bg-card border border-border rounded-2xl p-5 hover:shadow-lg hover:-translate-y-1 transition-all duration-200 group"
+              >
+                <div className="flex items-start gap-3 mb-3">
+                  <div className={`w-10 h-10 rounded-xl ${c.color} flex items-center justify-center flex-shrink-0`}>
+                    <CalendarDays className="w-5 h-5" />
+                  </div>
+                  <div className="min-w-0">
+                    <h3 className="font-heading font-semibold text-foreground text-sm group-hover:text-secondary transition-colors duration-150">
+                      {c.name}
+                    </h3>
+                    <p className="text-xs text-foreground/50 mt-0.5">{c.date}</p>
+                  </div>
+                </div>
+                <p className="text-xs text-foreground/60 line-clamp-2 leading-relaxed">
+                  {c.description}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          <div className="text-center">
+            <Link
+              to="/celebrations"
+              className="inline-flex items-center gap-2 bg-secondary/10 text-secondary px-6 py-3 rounded-xl font-semibold text-sm hover:bg-secondary/20 transition-all duration-150 active:scale-[0.97] group"
+            >
+              <Globe className="w-4 h-4" />
+              View All Celebrations
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform duration-150" />
+            </Link>
+          </div>
         </div>
       </section>
 

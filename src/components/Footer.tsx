@@ -26,6 +26,7 @@ export default function Footer() {
               <li><Link to="/shop" className="text-on-primary/70 hover:text-on-primary text-sm transition-colors duration-150">Shop Supplies</Link></li>
               <li><Link to="/guides" className="text-on-primary/70 hover:text-on-primary text-sm transition-colors duration-150">New Owner Guide</Link></li>
               <li><Link to="/articles" className="text-on-primary/70 hover:text-on-primary text-sm transition-colors duration-150">Articles</Link></li>
+              <li><Link to="/celebrations" className="text-on-primary/70 hover:text-on-primary text-sm transition-colors duration-150">Dog Day Celebrations</Link></li>
             </ul>
           </div>
 
@@ -61,7 +62,7 @@ export default function Footer() {
 
         <div className="border-t border-on-primary/20 mt-8 pt-8 text-center">
           <p className="text-on-primary/50 text-sm">
-            &copy; {new Date().getFullYear()} PawServe. Built for the DEV Weekend Challenge ❤️
+            &copy; {new Date().getFullYear()} PawServe. Celebrating dogs every day — from International Dog Day to National Puppy Day 🐾
           </p>
         </div>
       </div>

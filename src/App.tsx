@@ -8,6 +8,7 @@ import Guides from './pages/Guides';
 import Articles from './pages/Articles';
 import ArticleDetail from './pages/ArticleDetail';
 import Rehab from './pages/Rehab';
+import Celebrations from './pages/Celebrations';
 
 export default function App() {
   return (
@@ -22,6 +23,7 @@ export default function App() {
           <Route path="/articles" element={<Articles />} />
           <Route path="/articles/:id" element={<ArticleDetail />} />
           <Route path="/rehab" element={<Rehab />} />
+          <Route path="/celebrations" element={<Celebrations />} />
         </Route>
       </Routes>
     </BrowserRouter>

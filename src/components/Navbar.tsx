@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Heart, Stethoscope, ShoppingBag, BookOpen, Home } from 'lucide-react';
+import { Menu, X, Heart, Stethoscope, ShoppingBag, BookOpen, Home, Sparkles } from 'lucide-react';
 
 const navLinks = [
   { to: '/', label: 'Home', icon: Home },
@@ -8,6 +8,7 @@ const navLinks = [
   { to: '/health', label: 'Health', icon: Heart },
   { to: '/shop', label: 'Shop', icon: ShoppingBag },
   { to: '/guides', label: 'Guides', icon: BookOpen },
+  { to: '/celebrations', label: 'Celebrate', icon: Sparkles },
 ];
 
 export default function Navbar() {

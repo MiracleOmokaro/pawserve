@@ -91,6 +91,7 @@ PawServe uses a **client-side** architecture with serverless edge functions for 
 | `/articles` | Articles | Expert content |
 | `/articles/:id` | Article Detail | Full article |
 | `/rehab` | Rehab & Psychiatry | Dog wellness |
+| `/celebrations` | Dog Day Celebrations | International Dog Day, National Puppy Day, and more |
 
 ---
 

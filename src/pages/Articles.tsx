@@ -1,11 +1,14 @@
 import { Link } from 'react-router-dom';
-import { BookOpen, ArrowRight, Heart, Activity, CalendarDays } from 'lucide-react';
+import { BookOpen, ArrowRight, Heart, Activity, CalendarDays, Apple, Brain, Stethoscope } from 'lucide-react';
 import { articles } from '../constants/data';
 
 const categoryIcons: Record<string, React.ReactNode> = {
   'Emotional Care': <Heart className="w-4 h-4" />,
   'Rehab': <Activity className="w-4 h-4" />,
   'Dog Day': <CalendarDays className="w-4 h-4" />,
+  'Nutrition': <Apple className="w-4 h-4" />,
+  'Training': <Brain className="w-4 h-4" />,
+  'Health Tips': <Stethoscope className="w-4 h-4" />,
 };
 
 export default function Articles() {

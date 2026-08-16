@@ -1,13 +1,32 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
   <rect width="512" height="512" rx="64" fill="#5C4033"/>
-  <g transform="translate(256,256)">
-    <!-- Paw pad -->
-    <ellipse cx="0" cy="20" rx="72" ry="62" fill="#FDF8F3"/>
-    <!-- Toe beans -->
-    <ellipse cx="-72" cy="-58" rx="32" ry="36" fill="#FDF8F3" transform="rotate(-15)"/>
-    <ellipse cx="0" cy="-82" rx="32" ry="36" fill="#FDF8F3"/>
-    <ellipse cx="72" cy="-58" rx="32" ry="36" fill="#FDF8F3" transform="rotate(15)"/>
-    <ellipse cx="-46" cy="36" rx="18" ry="16" fill="#D4A574" transform="rotate(-10)"/>
-    <ellipse cx="46" cy="36" rx="18" ry="16" fill="#D4A574" transform="rotate(10)"/>
+  <!-- Dog face -->
+  <ellipse cx="256" cy="268" rx="140" ry="124" fill="#FDF8F3"/>
+  <!-- Ears -->
+  <path d="M132 202 Q84 116 144 144 Q172 156 160 198 Z" fill="#FDF8F3"/>
+  <path d="M380 202 Q428 116 368 144 Q340 156 352 198 Z" fill="#FDF8F3"/>
+  <path d="M144 186 Q108 134 152 150 Q166 158 156 186 Z" fill="#F5C6C6" opacity="0.6"/>
+  <path d="M368 186 Q404 134 360 150 Q346 158 356 186 Z" fill="#F5C6C6" opacity="0.6"/>
+  <!-- Eyes -->
+  <ellipse cx="198" cy="240" rx="22" ry="24" fill="#3A2A1D"/>
+  <ellipse cx="314" cy="240" rx="22" ry="24" fill="#3A2A1D"/>
+  <ellipse cx="190" cy="232" rx="8" ry="8" fill="white" opacity="0.9"/>
+  <ellipse cx="306" cy="232" rx="8" ry="8" fill="white" opacity="0.9"/>
+  <!-- Nose -->
+  <ellipse cx="256" cy="284" rx="26" ry="18" fill="#3A2A1D"/>
+  <ellipse cx="248" cy="280" rx="8" ry="5" fill="#5C4033" opacity="0.5"/>
+  <!-- Smile -->
+  <path d="M228 306 Q256 332 284 306" fill="none" stroke="#3A2A1D" stroke-width="6" stroke-linecap="round"/>
+  <!-- Tongue -->
+  <path d="M238 314 Q238 348 256 348 Q274 348 274 314" fill="#F08080" opacity="0.85"/>
+  <line x1="256" y1="324" x2="256" y2="348" stroke="#D95B5B" stroke-width="2" opacity="0.5"/>
+  <!-- Blush -->
+  <ellipse cx="148" cy="280" rx="16" ry="10" fill="#E07A2F" opacity="0.12"/>
+  <ellipse cx="364" cy="280" rx="16" ry="10" fill="#E07A2F" opacity="0.12"/>
+  <!-- Paw -->
+  <g transform="translate(256,456)" opacity="0.5">
+    <circle cx="0" cy="0" r="14" fill="#E07A2F"/>
+    <circle cx="-22" cy="-22" r="10" fill="#E07A2F"/>
+    <circle cx="22" cy="-22" r="10" fill="#E07A2F"/>
   </g>
 </svg>
