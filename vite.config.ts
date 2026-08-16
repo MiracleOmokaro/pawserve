@@ -36,7 +36,50 @@ export default defineConfig(() => ({
     }),
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['pawserve-logo.svg'],
+      includeAssets: [
+        'pawserve-logo.svg',
+        'icons/icon-192.svg',
+        'icons/icon-512.svg',
+      ],
+      workbox: {
+        globPatterns: ['**/*.{js,css,html,svg,png,ico,json,woff2}'],
+        runtimeCaching: [
+          {
+            urlPattern: /^https:\/\/xifkkozscsvrrnyzbecf\.supabase\.co\/.*/i,
+            handler: 'NetworkFirst',
+            options: {
+              cacheName: 'supabase-api-cache',
+              expiration: {
+                maxEntries: 50,
+                maxAgeSeconds: 60 * 60 * 24,
+              },
+              networkTimeoutSeconds: 5,
+            },
+          },
+          {
+            urlPattern: /^https:\/\/fonts\.googleapis\.com\/.*/i,
+            handler: 'StaleWhileRevalidate',
+            options: {
+              cacheName: 'google-fonts-cache',
+              expiration: {
+                maxEntries: 10,
+                maxAgeSeconds: 60 * 60 * 24 * 30,
+              },
+            },
+          },
+          {
+            urlPattern: /\.(?:png|jpg|jpeg|svg|gif|webp)$/,
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'image-cache',
+              expiration: {
+                maxEntries: 100,
+                maxAgeSeconds: 60 * 60 * 24 * 7,
+              },
+            },
+          },
+        ],
+      },
       manifest: {
         name: 'PawServe',
         short_name: 'PawServe',
@@ -46,12 +89,44 @@ export default defineConfig(() => ({
         display: 'standalone',
         scope: '/pawserve/',
         start_url: '/pawserve/',
+        orientation: 'portrait-primary',
+        categories: ['pets', 'health', 'shopping', 'lifestyle'],
+        lang: 'en',
+        dir: 'ltr',
+        prefer_related_applications: false,
         icons: [
           {
-            src: 'pawserve-logo.svg',
-            sizes: 'any',
+            src: 'icons/icon-192.svg',
+            sizes: '192x192',
             type: 'image/svg+xml',
-            purpose: 'any maskable',
+            purpose: 'any',
+          },
+          {
+            src: 'icons/icon-512.svg',
+            sizes: '512x512',
+            type: 'image/svg+xml',
+            purpose: 'any',
+          },
+          {
+            src: 'icons/icon-192-maskable.svg',
+            sizes: '192x192',
+            type: 'image/svg+xml',
+            purpose: 'maskable',
+          },
+          {
+            src: 'icons/icon-512-maskable.svg',
+            sizes: '512x512',
+            type: 'image/svg+xml',
+            purpose: 'maskable',
+          },
+        ],
+        screenshots: [
+          {
+            src: 'screenshots/home.png',
+            sizes: '1080x1920',
+            type: 'image/png',
+            form_factor: 'narrow',
+            label: 'PawServe Home Screen',
           },
         ],
       },

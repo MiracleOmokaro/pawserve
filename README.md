@@ -119,3 +119,17 @@ Distributed under the [MIT License](LICENSE).
 <p align="center">
   🐶 Built for happy, healthy dogs everywhere
 </p>
+
+---
+
+## 📱 Progressive Web App (PWA)
+
+PawServe is a fully installable **Progressive Web App** — no APK needed!
+
+- **Install on Home Screen** — Android: Chrome menu → "Add to Home Screen" · iOS: Share sheet → "Add to Home Screen"
+- **Works Offline** — cached content and images available without a connection
+- **Auto-updates** — always serves the latest version when online
+- **Full-screen mode** — native app-like experience with no browser chrome
+
+> No app store submission required. Just visit the live site and install.
+</p>
