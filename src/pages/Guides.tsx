@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { BookOpen, CheckCircle, AlertTriangle, Heart, Home, Bone, Syringe, PawPrint } from 'lucide-react';
 
 const sections = [
@@ -133,20 +134,20 @@ export default function Guides() {
           Our AI-powered symptom checker is here 24/7 for health concerns, or browse our articles for expert advice.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <a
-            href="/health"
+          <Link
+            to="/health"
             className="inline-flex items-center justify-center gap-2 bg-secondary text-white px-6 py-3 rounded-xl font-semibold text-sm hover:bg-secondary/90 transition-all duration-150 active:scale-[0.97]"
           >
             <Heart className="w-4 h-4" />
             Check Symptoms
-          </a>
-          <a
-            href="/articles"
+          </Link>
+          <Link
+            to="/articles"
             className="inline-flex items-center justify-center gap-2 bg-primary text-on-primary px-6 py-3 rounded-xl font-semibold text-sm hover:bg-primary/90 transition-all duration-150 active:scale-[0.97]"
           >
             <BookOpen className="w-4 h-4" />
             Read Articles
-          </a>
+          </Link>
         </div>
       </div>
     </div>

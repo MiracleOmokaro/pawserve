@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import { Heart, Send, Bot, User, AlertTriangle, Info, ArrowRight, Loader2 } from 'lucide-react';
+import { Heart, Send, Bot, User, AlertTriangle, Info, Loader2 } from 'lucide-react';
 import { firstAidGuides } from '../constants/data';
 import { config } from '../constants/config';
 import { GoogleGenerativeAI } from '@google/generative-ai';
