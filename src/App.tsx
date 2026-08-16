@@ -11,7 +11,7 @@ import Rehab from './pages/Rehab';
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/pawserve">
       <Routes>
         <Route element={<Layout />}>
           <Route path="/" element={<Home />} />
