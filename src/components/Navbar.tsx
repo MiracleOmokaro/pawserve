@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { PawPrint, Menu, X, Heart, Stethoscope, ShoppingBag, BookOpen, Home } from 'lucide-react';
+import { Menu, X, Heart, Stethoscope, ShoppingBag, BookOpen, Home } from 'lucide-react';
 
 const navLinks = [
   { to: '/', label: 'Home', icon: Home },
@@ -25,7 +25,7 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2 group" aria-label="PawServe home">
-            <PawPrint className="w-7 h-7 text-secondary transition-transform duration-200 group-hover:scale-110" />
+            <img src="/pawserve-logo.svg" alt="PawServe" className="w-8 h-8 transition-transform duration-200 group-hover:scale-110" />
             <span className="font-heading text-xl text-primary font-bold">PawServe</span>
           </Link>
 
