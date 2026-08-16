@@ -2,7 +2,6 @@ import { useState, useRef, useEffect } from 'react';
 import { Heart, Send, Bot, User, AlertTriangle, Info, Loader2, Mic, MicOff } from 'lucide-react';
 import { firstAidGuides } from '../constants/data';
 import { config } from '../constants/config';
-import { GoogleGenerativeAI } from '@google/generative-ai';
 import { useSpeechmatics } from '../hooks/useSpeechmatics';
 
 type Message = {
@@ -81,66 +80,50 @@ export default function Health() {
     setLoading(true);
 
     try {
-      if (config.gemini.apiKey && config.gemini.apiKey !== 'YOUR_GEMINI_API_KEY_HERE') {
-        const genAI = new GoogleGenerativeAI(config.gemini.apiKey);
-        const model = genAI.getGenerativeModel({ model: config.gemini.model });
-
-        const prompt = `You are a veterinary first aid assistant for a dog health platform called PawServe. 
-A dog owner describes these symptoms: "${userMessage}"
-
-Provide a helpful response in this format:
-1. **Possible Causes** — brief list
-2. **Immediate First Aid** — clear steps
-3. **When to See a Vet** — clear guidance
-
-End with a severity assessment line: 
-- [GREEN] if mild, can monitor at home
-- [YELLOW] if needs attention soon
-- [RED] if emergency, go to vet now
-
-Be compassionate but clear. Never diagnose definitively — always recommend consulting a vet for serious concerns.`;
-
-        const result = await model.generateContent(prompt);
-        const response = result.response.text();
-
-        const severity = response.includes('[RED]') ? 'red' as const
-          : response.includes('[YELLOW]') ? 'yellow' as const
-          : 'green' as const;
-
-        const cleanResponse = response.replace(/\[(GREEN|YELLOW|RED)\]/g, '').trim();
-
-        setMessages((prev) => [...prev, { role: 'assistant', content: cleanResponse, severity }]);
-      } else {
-        // Demo mode — show a canned response
-        const demoResponses = [
-          {
-            severity: 'yellow' as const,
-            content: `**Thanks for telling me about your dog's symptoms!**
-
-Since I'm in demo mode, here's general guidance:
-
-**Possible Causes:** Could be related to diet, activity, or environment.
-
-**Immediate First Aid:**
-1. Keep your dog calm and comfortable
-2. Monitor for any changes
-3. Ensure fresh water is available
-
-**When to See a Vet:** If symptoms persist for more than 24 hours, or if they worsen, please consult a veterinarian.
-
-Remember to set up your Gemini API key in the config to get AI-powered responses!`,
+      const res = await fetch(
+        `${config.supabase.url}/functions/v1/gemini-chat`,
+        {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${config.supabase.anonKey}`,
+            'Content-Type': 'application/json',
           },
-        ];
+          body: JSON.stringify({ prompt: userMessage }),
+        }
+      );
 
-        const demo = demoResponses[0];
-        setMessages((prev) => [...prev, { role: 'assistant', content: demo.content, severity: demo.severity }]);
+      if (!res.ok) {
+        const errData = await res.json().catch(() => ({}));
+        throw new Error(errData.error || 'Failed to get AI response');
       }
-    } catch {
+
+      const { text } = await res.json();
+
+      if (!text) {
+        setMessages((prev) => [
+          ...prev,
+          {
+            role: 'assistant',
+            content: "I received an empty response. Please try describing your dog's symptoms again.",
+          },
+        ]);
+        return;
+      }
+
+      const severity = text.includes('[RED]') ? 'red' as const
+        : text.includes('[YELLOW]') ? 'yellow' as const
+        : 'green' as const;
+
+      const cleanResponse = text.replace(/\[(GREEN|YELLOW|RED)\]/g, '').trim();
+
+      setMessages((prev) => [...prev, { role: 'assistant', content: cleanResponse, severity }]);
+    } catch (err) {
+      const message = err instanceof Error ? err.message : 'Unknown error';
       setMessages((prev) => [
         ...prev,
         {
           role: 'assistant',
-          content: "I'm sorry, I couldn't process that request. Please try again or check that your API key is configured correctly.",
+          content: `I'm sorry, I couldn't process that request. ${message !== 'Failed to get AI response' ? 'Please try again.' : 'The AI service is not configured yet. Ask the PawServe team to set up the Gemini API key.'}`,
         },
       ]);
     } finally {
