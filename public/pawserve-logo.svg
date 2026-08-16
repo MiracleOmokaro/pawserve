@@ -1,29 +1,21 @@
 <svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <!-- Outer ring — subtle badge -->
-  <circle cx="60" cy="60" r="56" fill="#FDF8F3" stroke="#5C4033" stroke-width="2.5" stroke-linejoin="round"/>
+  <!-- Background circle -->
+  <circle cx="60" cy="60" r="56" fill="#FDF8F3" stroke="#5C4033" stroke-width="2"/>
 
-  <!-- Left ear -->
-  <ellipse cx="32" cy="34" rx="14" ry="20" fill="#5C4033" transform="rotate(-25, 32, 34)"/>
+  <!-- Sophisticated paw — main pad (heartbeat-inspired shape) -->
+  <path d="M60 50 C48 50 40 58 40 68 C40 78 48 84 60 84 C72 84 80 78 80 68 C80 58 72 50 60 50Z"
+        fill="#5C4033" opacity="0.9"/>
 
-  <!-- Right ear -->
-  <ellipse cx="88" cy="34" rx="14" ry="20" fill="#5C4033" transform="rotate(25, 88, 34)"/>
+  <!-- Pulse/health line through the paw pad -->
+  <path d="M44 67 L51 67 L54 60 L58 75 L61 63 L64 72 L67 67 L76 67"
+        stroke="#E07A2F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
 
-  <!-- Left inner ear accent (warm orange) -->
-  <ellipse cx="32" cy="34" rx="6" ry="11" fill="#E07A2F" transform="rotate(-25, 32, 34)"/>
+  <!-- Toe pads — modern rounded dots -->
+  <circle cx="38" cy="44" r="7" fill="#5C4033" opacity="0.85"/>
+  <circle cx="56" cy="38" r="8" fill="#5C4033" opacity="0.85"/>
+  <circle cx="64" cy="38" r="8" fill="#5C4033" opacity="0.85"/>
+  <circle cx="82" cy="44" r="7" fill="#5C4033" opacity="0.85"/>
 
-  <!-- Right inner ear accent (warm orange) -->
-  <ellipse cx="88" cy="34" rx="6" ry="11" fill="#E07A2F" transform="rotate(25, 88, 34)"/>
-
-  <!-- Head -->
-  <ellipse cx="60" cy="58" rx="30" ry="26" fill="#5C4033"/>
-
-  <!-- Eyes -->
-  <circle cx="46" cy="54" r="4" fill="#FDF8F3"/>
-  <circle cx="74" cy="54" r="4" fill="#FDF8F3"/>
-
-  <!-- Nose -->
-  <ellipse cx="60" cy="66" rx="5" ry="3.5" fill="#E07A2F"/>
-
-  <!-- Smile -->
-  <path d="M 52 72 Q 60 78 68 72" stroke="#FDF8F3" stroke-width="2" stroke-linecap="round" fill="none"/>
+  <!-- Subtle highlight on center pad -->
+  <ellipse cx="60" cy="68" rx="10" ry="6" fill="#6B8E5A" opacity="0.15"/>
 </svg>
