@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="pawserve-logo.svg" alt="PawServe Logo" width="100" height="100" />
+  <img src="public/pawserve-logo.svg" alt="PawServe Logo" width="100" height="100" />
 </p>
 
 <h1 align="center">🐾 PawServe</h1>
@@ -248,7 +248,7 @@ npm run build
 
 The `dist/` folder is ready for deployment. The project includes a pre-configured [GitHub Actions workflow](.github/workflows/deploy.yml) that automatically builds and deploys to GitHub Pages on every push to `main`.
 
-**Requirements:** GitHub Pages requires the repository to be **public** (or a paid GitHub plan with private Pages support).
+**Status:** The repository is **public** ✅ — GitHub Pages is ready to deploy. Push to `main` and the workflow will build and deploy automatically.
 
 ### Other Hosting Providers
 
