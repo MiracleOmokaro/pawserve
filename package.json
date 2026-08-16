@@ -3,7 +3,18 @@
   "private": true,
   "version": "1.0.0",
   "description": "Everything your dog needs, in one place — AI symptom checker, vet directory, pet supply shop, and care guides. Built for International Dog Day.",
-  "keywords": ["dog", "pet-care", "veterinary", "gemini-ai", "speechmatics", "react", "tailwindcss", "pets", "dog-care", "international-dog-day"],
+  "keywords": [
+    "dog",
+    "pet-care",
+    "veterinary",
+    "gemini-ai",
+    "speechmatics",
+    "react",
+    "tailwindcss",
+    "pets",
+    "dog-care",
+    "international-dog-day"
+  ],
   "author": "PawServe",
   "type": "module",
   "scripts": {
@@ -24,6 +35,7 @@
     "tailwindcss": "^4.1.18"
   },
   "devDependencies": {
+    "@playwright/test": "^1.62.1",
     "@types/node": "^24.10.1",
     "@types/react": "^18.3.1",
     "@types/react-dom": "^18.3.1",

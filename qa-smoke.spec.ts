@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-const BASE = 'http://localhost:5174/pawserve/';
+const BASE = 'http://localhost:5173/pawserve/';
 
 test.describe('PawServe smoke tests', () => {
   test('homepage loads with title', async ({ page }) => {
