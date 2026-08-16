@@ -7,8 +7,8 @@ export const config = {
     model: 'gemini-2.0-flash',
   },
   supabase: {
-    url: import.meta.env.VITE_SUPABASE_URL || '',
-    anonKey: import.meta.env.VITE_SUPABASE_ANON_KEY || '',
+    url: import.meta.env.VITE_SUPABASE_URL || 'https://xifkkozscsvrrnyzbecf.supabase.co',
+    anonKey: import.meta.env.VITE_SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhpZmtrb3pzY3N2cnJueXpiZWNmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODY4NzIxMTYsImV4cCI6MjEwMjQ0ODExNn0.Ps4V7vI7RdeXbZB-hye5EsUx-EQWL5gOHqQBaj0S_wQ',
   },
   app: {
     name: 'PawServe',

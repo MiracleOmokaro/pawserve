@@ -1,8 +1,9 @@
 import { useState, useRef, useEffect } from 'react';
-import { Heart, Send, Bot, User, AlertTriangle, Info, Loader2 } from 'lucide-react';
+import { Heart, Send, Bot, User, AlertTriangle, Info, Loader2, Mic, MicOff } from 'lucide-react';
 import { firstAidGuides } from '../constants/data';
 import { config } from '../constants/config';
 import { GoogleGenerativeAI } from '@google/generative-ai';
+import { useSpeechmatics } from '../hooks/useSpeechmatics';
 
 type Message = {
   role: 'user' | 'assistant';
@@ -28,6 +29,43 @@ export default function Health() {
   const [selectedGuide, setSelectedGuide] = useState<string | null>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
+  const prevFinalText = useRef('');
+
+  const {
+    state: voiceState,
+    interimText,
+    finalText,
+    error: voiceError,
+    startListening,
+    stopListening,
+  } = useSpeechmatics();
+
+  // Append final transcribed text to input when it changes
+  useEffect(() => {
+    if (finalText && finalText !== prevFinalText.current) {
+      const newText = finalText.slice(prevFinalText.current.length);
+      if (newText) {
+        setInput(prev => prev + (prev && !prev.endsWith(' ') && !newText.startsWith(' ') ? ' ' : '') + newText);
+      }
+      prevFinalText.current = finalText;
+    }
+  }, [finalText]);
+
+  // Clear voice error after a timeout
+  useEffect(() => {
+    if (voiceError) {
+      const timer = setTimeout(() => {}, 5000);
+      return () => clearTimeout(timer);
+    }
+  }, [voiceError]);
+
+  const handleVoiceToggle = () => {
+    if (voiceState === 'listening') {
+      stopListening();
+    } else {
+      startListening();
+    }
+  };
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -191,7 +229,7 @@ Remember to set up your Gemini API key in the config to get AI-powered responses
 
             {/* Input */}
             <form onSubmit={handleSubmit} className="border-t border-border p-4">
-              <div className="flex gap-3">
+              <div className="flex gap-2">
                 <textarea
                   ref={inputRef}
                   value={input}
@@ -202,15 +240,74 @@ Remember to set up your Gemini API key in the config to get AI-powered responses
                   className="flex-1 px-4 py-3 border border-border rounded-xl text-sm focus:border-ring focus:ring-2 focus:ring-ring/20 outline-none transition-all duration-150 resize-none"
                   aria-label="Describe symptoms"
                 />
-                <button
-                  type="submit"
-                  disabled={!input.trim() || loading}
-                  className="px-5 py-3 bg-secondary text-white rounded-xl hover:bg-secondary/90 disabled:bg-muted disabled:text-foreground/30 transition-all duration-150 active:scale-[0.97] cursor-pointer disabled:cursor-not-allowed"
-                  aria-label="Send message"
-                >
-                  <Send className="w-4 h-4" />
-                </button>
+                <div className="flex gap-2">
+                  {/* Microphone button */}
+                  <button
+                    type="button"
+                    onClick={handleVoiceToggle}
+                    disabled={voiceState === 'connecting'}
+                    className={`p-3 rounded-xl border transition-all duration-150 active:scale-[0.97] cursor-pointer disabled:cursor-not-allowed ${
+                      voiceState === 'listening'
+                        ? 'bg-destructive/10 border-destructive/30 text-destructive animate-pulse shadow-lg shadow-destructive/20'
+                        : voiceState === 'connecting'
+                        ? 'bg-muted border-border text-foreground/40'
+                        : 'bg-card border-border text-foreground/60 hover:text-foreground hover:border-foreground/30'
+                    }`}
+                    aria-label={voiceState === 'listening' ? 'Stop voice input' : 'Start voice input'}
+                    aria-pressed={voiceState === 'listening'}
+                  >
+                    {voiceState === 'connecting' ? (
+                      <Loader2 className="w-4 h-4 animate-spin" />
+                    ) : voiceState === 'listening' ? (
+                      <MicOff className="w-4 h-4" />
+                    ) : (
+                      <Mic className="w-4 h-4" />
+                    )}
+                  </button>
+
+                  {/* Send button */}
+                  <button
+                    type="submit"
+                    disabled={!input.trim() || loading}
+                    className="px-5 py-3 bg-secondary text-white rounded-xl hover:bg-secondary/90 disabled:bg-muted disabled:text-foreground/30 transition-all duration-150 active:scale-[0.97] cursor-pointer disabled:cursor-not-allowed"
+                    aria-label="Send message"
+                  >
+                    {loading ? (
+                      <Loader2 className="w-4 h-4 animate-spin" />
+                    ) : (
+                      <Send className="w-4 h-4" />
+                    )}
+                  </button>
+                </div>
               </div>
+
+              {/* Voice state indicators */}
+              {voiceState === 'listening' && (
+                <div className="mt-2 flex items-center gap-2 text-xs text-foreground/60 animate-fade-in" aria-live="polite" aria-atomic="true">
+                  <span className="w-2 h-2 rounded-full bg-destructive animate-pulse" />
+                  <span>Listening{interimText ? ': ' : '...'}</span>
+                  {interimText && (
+                    <span className="italic text-foreground/40 truncate max-w-[200px] sm:max-w-[400px]">
+                      {interimText}
+                    </span>
+                  )}
+                </div>
+              )}
+
+              {voiceState === 'connecting' && (
+                <div className="mt-2 flex items-center gap-2 text-xs text-foreground/60 animate-fade-in" aria-live="polite">
+                  <Loader2 className="w-3 h-3 animate-spin" />
+                  <span>Connecting to microphone...</span>
+                </div>
+              )}
+
+              {voiceError && (
+                <div className="mt-2 text-xs text-destructive flex items-center gap-1.5 animate-fade-in" role="alert">
+                  <AlertTriangle className="w-3 h-3" />
+                  <span>{voiceError}</span>
+                </div>
+              )}
+
               <p className="text-xs text-foreground/40 mt-2">
                 Responses are for informational purposes only. Always consult a licensed veterinarian.
               </p>
