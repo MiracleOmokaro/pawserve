@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Heart, Stethoscope, ShoppingBag, BookOpen, Home, Sparkles } from 'lucide-react';
+import { Menu, X, Heart, Stethoscope, ShoppingBag, BookOpen, Home, Sparkles, TreePine, GraduationCap, UtensilsCrossed } from 'lucide-react';
 
 const navLinks = [
   { to: '/', label: 'Home', icon: Home },
@@ -8,6 +8,9 @@ const navLinks = [
   { to: '/health', label: 'Health', icon: Heart },
   { to: '/shop', label: 'Shop', icon: ShoppingBag },
   { to: '/guides', label: 'Guides', icon: BookOpen },
+  { to: '/parks', label: 'Parks', icon: TreePine },
+  { to: '/schools', label: 'Schools', icon: GraduationCap },
+  { to: '/dog-menu', label: 'Dog Menu', icon: UtensilsCrossed },
   { to: '/celebrations', label: 'Celebrate', icon: Sparkles },
 ];
 
@@ -31,7 +34,7 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop nav */}
-          <div className="hidden md:flex items-center gap-1">
+          <div className="hidden lg:flex items-center gap-1">
             {navLinks.map((link) => {
               const Icon = link.icon;
               const active = isActive(link.to);
@@ -39,7 +42,7 @@ export default function Navbar() {
                 <Link
                   key={link.to}
                   to={link.to}
-                  className={`flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-150 ${
+                  className={`flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-medium transition-all duration-150 ${
                     active
                       ? 'bg-secondary/10 text-secondary'
                       : 'text-foreground/70 hover:text-foreground hover:bg-muted'
@@ -56,7 +59,7 @@ export default function Navbar() {
           {/* Mobile menu button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden p-2 rounded-lg text-foreground/70 hover:text-foreground hover:bg-muted transition-colors duration-150"
+            className="lg:hidden p-2 rounded-lg text-foreground/70 hover:text-foreground hover:bg-muted transition-colors duration-150"
             aria-label={isOpen ? 'Close menu' : 'Open menu'}
             aria-expanded={isOpen}
           >
@@ -67,7 +70,7 @@ export default function Navbar() {
 
       {/* Mobile nav */}
       {isOpen && (
-        <div className="md:hidden border-t border-border bg-white animate-fade-in" role="navigation" aria-label="Mobile navigation">
+        <div className="lg:hidden border-t border-border bg-white animate-fade-in" role="navigation" aria-label="Mobile navigation">
           <div className="px-4 py-3 space-y-1">
             {navLinks.map((link) => {
               const Icon = link.icon;
