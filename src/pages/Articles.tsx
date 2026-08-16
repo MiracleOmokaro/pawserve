@@ -9,8 +9,6 @@ const categoryIcons: Record<string, React.ReactNode> = {
 };
 
 export default function Articles() {
-  const categories = ['All', ...new Set(articles.map((a) => a.category))];
-
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
       {/* Header */}
