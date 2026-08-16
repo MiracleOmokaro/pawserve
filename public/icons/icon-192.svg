@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="192" height="192" viewBox="0 0 192 192">
+  <rect width="192" height="192" rx="32" fill="#5C4033"/>
+  <g transform="translate(96,96)">
+    <!-- Paw pad -->
+    <ellipse cx="0" cy="8" rx="28" ry="24" fill="#FDF8F3"/>
+    <!-- Toe beans -->
+    <ellipse cx="-28" cy="-22" rx="12" ry="14" fill="#FDF8F3" transform="rotate(-15)"/>
+    <ellipse cx="0" cy="-32" rx="12" ry="14" fill="#FDF8F3"/>
+    <ellipse cx="28" cy="-22" rx="12" ry="14" fill="#FDF8F3" transform="rotate(15)"/>
+    <!-- Small toe bean -->
+    <ellipse cx="-18" cy="14" rx="7" ry="6" fill="#D4A574" transform="rotate(-10)"/>
+    <ellipse cx="18" cy="14" rx="7" ry="6" fill="#D4A574" transform="rotate(10)"/>
+  </g>
+</svg>
