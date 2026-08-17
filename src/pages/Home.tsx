@@ -1,34 +1,78 @@
 import { Link } from 'react-router-dom';
-import { PawPrint, Stethoscope, Heart, ShoppingBag, BookOpen, ArrowRight, Award, Users, Sparkles, CalendarDays, Globe } from 'lucide-react';
+import {
+  PawPrint,
+  Stethoscope,
+  Heart,
+  ShoppingBag,
+  BookOpen,
+  ArrowRight,
+  Award,
+  Users,
+  Sparkles,
+  CalendarDays,
+  Globe,
+  TreePine,
+  GraduationCap,
+  UtensilsCrossed,
+  Activity,
+} from 'lucide-react';
 import { dogCelebrations } from '../constants/data';
 
 const features = [
   {
+    icon: PawPrint,
+    title: 'Breed Finder',
+    description: 'Explore 20+ breeds by category, size, and temperament — find the right match for your life.',
+    link: '/breeds',
+    color: 'bg-secondary/10 text-secondary',
+  },
+  {
     icon: Stethoscope,
     title: 'Find a Vet',
-    description: 'Browse trusted vets in your area, check availability, and book appointments.',
+    description: 'Browse trusted vets by specialty — including rehabilitation specialists — and check availability.',
     link: '/vets',
-    color: 'bg-secondary/10 text-secondary',
+    color: 'bg-accent/10 text-accent',
   },
   {
     icon: Heart,
     title: 'Symptom Checker',
-    description: 'AI-powered health advice — describe symptoms and get first aid guidance instantly.',
+    description: 'AI-powered health advice — describe symptoms and get first-aid guidance instantly.',
     link: '/health',
-    color: 'bg-accent/10 text-accent',
+    color: 'bg-secondary/10 text-secondary',
   },
   {
     icon: ShoppingBag,
     title: 'Shop Supplies',
     description: 'Premium food, toys, health products, and grooming essentials.',
     link: '/shop',
+    color: 'bg-accent/10 text-accent',
+  },
+  {
+    icon: TreePine,
+    title: 'Dog Parks',
+    description: 'Discover off-leash parks and dog-friendly outdoor spots around the world.',
+    link: '/parks',
     color: 'bg-secondary/10 text-secondary',
   },
   {
-    icon: BookOpen,
-    title: 'Expert Guides',
-    description: 'New owner tips, emotional care, rehab advice, and more.',
-    link: '/guides',
+    icon: GraduationCap,
+    title: 'Dog Schools',
+    description: 'Find trusted training academies — from puppy class to advanced K9 programs.',
+    link: '/schools',
+    color: 'bg-accent/10 text-accent',
+  },
+  {
+    icon: UtensilsCrossed,
+    title: 'Global Dog Menu',
+    description: 'Dog-friendly cafés and restaurants where your pup is the guest of honor.',
+    link: '/dog-menu',
+    color: 'bg-secondary/10 text-secondary',
+  },
+  {
+    icon: Activity,
+    title: 'Rehab & Recovery',
+    description: 'Learn about hydrotherapy, laser therapy, and find rehab-focused vets.',
+    link: '/rehab',
     color: 'bg-accent/10 text-accent',
   },
 ];
@@ -61,22 +105,22 @@ export default function Home() {
               <span className="text-secondary block sm:inline"> Dog Needs</span>
             </h1>
             <p className="text-lg sm:text-xl text-on-primary/80 mb-8 max-w-2xl mx-auto leading-relaxed">
-              Find trusted vets, get AI-powered health advice, shop for premium supplies, and learn expert care tips — all in one place.
+              Breeds, vets, AI health advice, parks, schools, shops, and dog-friendly places — all in one platform.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
-                to="/health"
+                to="/breeds"
                 className="inline-flex items-center justify-center gap-2 bg-secondary text-white px-8 py-3.5 rounded-xl font-semibold text-base hover:bg-secondary/90 transition-all duration-150 active:scale-[0.97]"
+              >
+                <PawPrint className="w-5 h-5" />
+                Explore Breeds
+              </Link>
+              <Link
+                to="/health"
+                className="inline-flex items-center justify-center gap-2 bg-white/10 text-on-primary border border-on-primary/30 px-8 py-3.5 rounded-xl font-semibold text-base hover:bg-white/20 transition-all duration-150 active:scale-[0.97] backdrop-blur-sm"
               >
                 <Heart className="w-5 h-5" />
                 Check Symptoms
-              </Link>
-              <Link
-                to="/vets"
-                className="inline-flex items-center justify-center gap-2 bg-white/10 text-on-primary border border-on-primary/30 px-8 py-3.5 rounded-xl font-semibold text-base hover:bg-white/20 transition-all duration-150 active:scale-[0.97] backdrop-blur-sm"
-              >
-                <Stethoscope className="w-5 h-5" />
-                Find a Vet
               </Link>
             </div>
           </div>
@@ -101,13 +145,13 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Features */}
+      {/* Features — full product map */}
       <section className="py-16 sm:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="font-heading text-3xl sm:text-4xl font-bold text-foreground mb-4">Everything under one paw</h2>
             <p className="text-foreground/60 max-w-2xl mx-auto">
-              From finding the right vet to keeping your pup happy and healthy, we've got you covered.
+              From choosing a breed to finding a park, school, vet, or café — PawServe covers the full dog-care journey.
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -119,13 +163,15 @@ export default function Home() {
                   to={feature.link}
                   className="group bg-card border border-border rounded-2xl p-6 hover:bg-card-hover hover:shadow-lg hover:-translate-y-1 transition-all duration-200"
                 >
-                  <div className={`w-12 h-12 rounded-xl ${feature.color} flex items-center justify-center mb-4 transition-transform duration-200 group-hover:scale-110`}>
+                  <div
+                    className={`w-12 h-12 rounded-xl ${feature.color} flex items-center justify-center mb-4 transition-transform duration-200 group-hover:scale-110`}
+                  >
                     <Icon className="w-6 h-6" />
                   </div>
                   <h3 className="font-heading text-lg font-semibold text-foreground mb-2">{feature.title}</h3>
                   <p className="text-sm text-foreground/60 mb-4">{feature.description}</p>
                   <span className="inline-flex items-center gap-1 text-sm font-medium text-secondary group-hover:gap-2 transition-all duration-150">
-                    Learn more <ArrowRight className="w-3.5 h-3.5" />
+                    Open <ArrowRight className="w-3.5 h-3.5" />
                   </span>
                 </Link>
               );
@@ -137,9 +183,7 @@ export default function Home() {
       {/* CTA Section */}
       <section className="bg-gradient-to-r from-accent/10 to-secondary/10 py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="font-heading text-3xl sm:text-4xl font-bold text-foreground mb-4">
-            Got a new puppy?
-          </h2>
+          <h2 className="font-heading text-3xl sm:text-4xl font-bold text-foreground mb-4">Got a new puppy?</h2>
           <p className="text-foreground/60 text-lg mb-8 max-w-xl mx-auto">
             Our step-by-step guide covers everything — from puppy-proofing your home to the first vet visit.
           </p>
@@ -162,8 +206,7 @@ export default function Home() {
             </div>
             <h2 className="font-heading text-3xl sm:text-4xl font-bold text-foreground mb-3">Dog Day Celebrations</h2>
             <p className="text-foreground/60 max-w-2xl mx-auto">
-              From International Dog Day to National Puppy Day — celebrate your best friend all year round!
-              Discover fun ways to honor your pup on every special occasion.
+              From International Dog Day to National Puppy Day — celebrate your best friend all year round.
             </p>
           </div>
 
@@ -184,9 +227,7 @@ export default function Home() {
                     <p className="text-xs text-foreground/50 mt-0.5">{c.date}</p>
                   </div>
                 </div>
-                <p className="text-xs text-foreground/60 line-clamp-2 leading-relaxed">
-                  {c.description}
-                </p>
+                <p className="text-xs text-foreground/60 line-clamp-2 leading-relaxed">{c.description}</p>
               </div>
             ))}
           </div>
@@ -212,7 +253,10 @@ export default function Home() {
               <h2 className="font-heading text-3xl sm:text-4xl font-bold text-foreground mb-2">Latest Articles</h2>
               <p className="text-foreground/60">Expert advice for happy, healthy dogs.</p>
             </div>
-            <Link to="/articles" className="hidden sm:inline-flex items-center gap-1 text-secondary font-medium hover:gap-2 transition-all duration-150">
+            <Link
+              to="/articles"
+              className="hidden sm:inline-flex items-center gap-1 text-secondary font-medium hover:gap-2 transition-all duration-150"
+            >
               View all <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
